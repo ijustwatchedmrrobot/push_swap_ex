@@ -37,7 +37,7 @@ void    arr_to_list(int *arr, list **root)
 	*root = lstnew(*arr++);
 	while (*arr)
 	{
-		lstlast(*root)->next = lstnew(*arr);
+		lstlast(*root)->next = &(lstnew(*arr));
 		*root = (*root)->next;
 		arr++;
 	}
