@@ -8,47 +8,44 @@ typedef struct linked_list
 
 } list;
 
-list    *lstnew(int data)
-{
-    list    *node;
-    
-	node = malloc(sizeof(list));
-    if (!node)
-        return (NULL);
-    node->data = data;
-    node->next = NULL;
-    return (node);
-}
-
-list	*lstlast(list *lst)
-{
-	list	*temp;	
-	if (!lst)
-		return (NULL);
-	temp = lst;
-	while (temp->next)
-		temp = temp->next;
-	return (temp);
-}
-
-void    arr_to_list(int *arr, list **root)
+void	insert(list **root, int data)
 {
 	list	*temp;
-	*root = lstnew(*arr++);
-	while (*arr)
+	list	*ptr;
+
+	temp = malloc(sizeof(list));
+	temp->data = data;
+	temp->next = NULL;
+	if (!*root)
+		*root = temp;
+	else
 	{
-		lstlast(*root)->next = lstnew(*arr);
-		*root = (*root)->next;
-		arr++;
+		ptr = malloc(sizeof(list));
+		ptr = *root;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = temp;
 	}
+}
+
+list    *arr_to_list(int *arr, int	arr_size)
+{
+	list	*root = NULL;
+
+	while (arr_size--)
+		insert(&root, *arr++);
+	return (root);
 }
 
 int main()
 {
     int arr[] = {223, 45, 85, 21, 47};
 	list	*root = NULL;
-	arr_to_list(arr, &root);
-	while (root)
+	int i;
+
+	i = 5;
+	root = arr_to_list(arr, 5);
+	while (i--)
 	{	
 		printf("%d\n", root->data);
 		root = root->next;
