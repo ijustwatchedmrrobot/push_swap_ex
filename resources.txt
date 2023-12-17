@@ -1,0 +1,4 @@
+linked list
+https://www.geeksforgeeks.org/create-linked-list-from-a-given-array/
+stack
+https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/
