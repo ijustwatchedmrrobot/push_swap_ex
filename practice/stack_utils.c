@@ -25,6 +25,18 @@ void	push(Stack **top,int data)
 	*top = temp;
 }
 
+// a -> b -> c -> d -> top
+
+void	pop(Stack **top)
+{
+	Stack	*temp;
+
+	temp = malloc(sizeof(Stack));
+	temp = *top;
+	*top = temp->next;
+	free(temp);
+}
+
 Stack	**create_stack(int count, ...)
 {
 	Stack	*top;
@@ -37,7 +49,7 @@ Stack	**create_stack(int count, ...)
 	while (count--)
 		push(&top, va_arg(args, int));
 	va_end(args);
-	printf("%d\n\n", top->index);			//check index of the top if it's always the last index
+	//printf("%d\n\n", top->index);			//check index of the top if it's always the last index
 	return (root);
 }
 
@@ -55,6 +67,7 @@ void	print_stack(Stack	*root)
 	}
 }
 
+/*
 int	main()
 {
 	Stack	**root;
@@ -62,4 +75,19 @@ int	main()
 	root = create_stack(6, 1, 2, 3, 4, 5, 6);
 	print_stack(*root);
 	return (0);
+}
+*/
+
+int main()
+{
+	Stack	*top;
+	Stack	**root;
+
+	top = NULL;
+	root = &top;
+	push(&top, 5);
+	push(&top, 80);
+	pop(&top);
+	push(&top, 10);
+	print_stack(*root);
 }
