@@ -38,6 +38,8 @@ void	insert(list **root, int data)
 	}
 }
 
+//root->temp1->temp2...
+
 list    *arr_to_list(int *arr, int	arr_size)
 {
 	list	*root = NULL;
