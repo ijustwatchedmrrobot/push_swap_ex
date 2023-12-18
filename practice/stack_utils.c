@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//stack's 'top' is the root of the linked list and changes with every insert
+//stack's 'top' changes with every insert
 
 typedef struct stack_list
 {
@@ -11,61 +11,55 @@ typedef struct stack_list
 	struct stack_list	*next;
 } Stack;
 
-void	push(Stack **top, int data)
+void	push(Stack **top,int data)
 {
 	Stack	*temp;
-	Stack	*ptr;
-	static int index = -1;
 
 	temp = malloc(sizeof(Stack));
-	temp->next = NULL;
+	temp->next = *top;
 	temp->data = data;
-	temp->index = index;
 	if (*top == NULL)
-		*top = temp;	
+		temp->index = -1;
 	else
-	{
-		ptr = malloc(sizeof(Stack));
-		ptr->next = *top;
-		ptr->data = data;
-		*top = ptr;
-	}
+		temp->index = (*top)->index + 1;
+	*top = temp;
 }
 
-//temp2->temp1->top
-//temp1->top
-//top
-void	create_stack(Stack **top,int nums, ...)
+Stack	**create_stack(int count, ...)
 {
+	Stack	*top;
+	Stack	**root;
 	va_list	args;
-	Stack	*temp;
-	int	counter = nums;
 
-	temp = *top;
-	va_start(args, nums);
-	while ((counter--) != 0)
-		push(&temp, va_arg(args, int));
+	top = NULL;
+	root = &top;
+	va_start(args, count);
+	while (count--)
+		push(&top, va_arg(args, int));
 	va_end(args);
+	printf("%d\n\n", top->index);			//check index of the top if it's always the last index
+	return (root);
 }
 
-void	print_stack(Stack **top)
+void	print_stack(Stack	*root)
 {
 	Stack	*temp;
 
-	temp = malloc(sizeof(Stack));
-	temp = *top;
-	while ((temp->next) != NULL)
+	temp = root;
+	while (temp != NULL)
 	{
 		printf("data: %d\n", temp->data);
 		printf("index: %d\n", temp->index);
+		printf("\n");
 		temp = temp->next;
 	}
 }
 
-int	main(void)
+int	main()
 {
-	Stack	*top = NULL;
-
-	create_stack(&top, 5, 1, 2, 3, 4, 5);
-	print_stack(&top);
+	Stack	**root;
+	
+	root = create_stack(6, 1, 2, 3, 4, 5, 6);
+	print_stack(*root);
+	return (0);
 }
