@@ -38,11 +38,13 @@ void	push(Stack **top, int data)
 void	create_stack(Stack **top,int nums, ...)
 {
 	va_list	args;
+	Stack	*temp;
 	int	counter = nums;
 
+	temp = *top;
 	va_start(args, nums);
 	while ((counter--) != 0)
-		push(&top, va_arg(args, int));
+		push(&temp, va_arg(args, int));
 	va_end(args);
 }
 
