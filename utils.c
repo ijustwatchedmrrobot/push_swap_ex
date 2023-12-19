@@ -12,8 +12,7 @@
 
 #include "push_swap.h"
 
-
-//utils
+//UTILS
 void	ft_error(char *msg)
 {
 	ft_putendl_fd(msg, 1);
@@ -34,15 +33,18 @@ int		is_sorted(t_list **stack)
 	return (1);
 }
 
-void	str_free(char **str)
+
+//free from last (check!!)
+void	free_str(char **str)
 {
 	while (*str)
 	{
 		free(*str);
-		str++;
+		*str++;
 	}
 }
 
+//find the distance between entered index and the top
 int	stack_distance(t_list **stack, int index)
 {
 	t_list	*top;
@@ -86,7 +88,30 @@ void	print_stack(t_list *top)
 	}
 }
 
+//make the distanced index top
+//divide the instructions by two so you get the minimum cmds
+void	make_index_top(t_list **stack, int distance)
+{
+	t_list	*top;
+	int		temp;
 
+	if (!distance)
+		return (0);
+	top = *stack;
+	temp = ft_lstsize(top) - distance;
+	if (distance <= (ft_lstsize(top) / 2))
+	{
+		while (distance -- > 0)
+			ra(stack);
+	}
+	else
+	{
+		while (temp-- > 0)
+			rra(stack);
+	}
+}
+
+//ARGS
 //try to rm index
 int	contains(int num, char **av, int i)
 {
@@ -115,21 +140,24 @@ void	check_args(int ac, char **av)
 {
 	long	temp;
 	char	**args;
+	int		i;
 
+	i = 1;
 	if (ac == 2)
 		args = ft_split(*(av + 1), ' ');
 	else
 		*(args++) = av;
-	while (*args)
+	while (*(args + i))
 	{
-		temp = ft_atoi(*args);
-		if (!is_str_num(*args))
+		temp = ft_atoi(*(args + i));
+		if (!is_str_num(*(args + i)))
 			ft_error("Error! Not a number.");
-		//if (contains)
+		if (contains(temp, args, i))
+			ft_error("Error, reiteration occurs.")
 		if (temp < -2147483648 || temp > 2147483647)
 			ft_error("Error! Limit for integer exceeded.");
-	
+		i++
 	}
+	if (ac == 2)
+		ft_free(args);
 }
-
-// char **args =  {"one", "two", "three", "four", "three"}
