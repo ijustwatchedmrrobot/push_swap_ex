@@ -98,11 +98,59 @@ int	pa(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
+//pushes a_top to b
 int	pb(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
 	ft_putendl_fd("pb", 1);	
+	return (0);
+}
+
+//shift all the elements of stack by one, first element becomes the last
+// NULL <- 1 <- 2 <- 3 <- 4 <- 5 <- *stack
+// NULL <- 1 <- 2 <- 3 <- 4 <- 5 <- 1 <- ...
+// NULL <- 1 <- 2 <- 3 <- 4 <- *stack <- 5 <- 1 <- ...
+// NULL <- 5 <- 1 <- 2 <- 3 <- 4 <- *stack
+//change the 'next' of last two elements (top and prev)
+int	rotate(t_list	**stack)
+{
+	t_list	*top;
+	t_list	*bot;
+
+	if (ft_lstsize(&stack) < 2)
+		return (-1);
+	top = *stack;
+	bot = ft_lstlast(&stack);
+	*stack = top->next;
+	top->next = NULL;
+	bot->next = top;
+	return (0);
+}
+
+int	ra(t_list	**stack_a)
+{
+	if (rotate(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("ra", 1);
+	return (0);
+}
+
+int	ra(t_list	**stack_b)
+{
+	if (rotate(stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("rb", 1);
+	return (0);
+}
+
+int	rr(t_list	**stack_a, t_list	**stack_b)
+{
+	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
+		return (-1);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putendl_fd("rr", 1);
 	return (0);
 }
 

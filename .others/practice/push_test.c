@@ -11,6 +11,19 @@ typedef struct stack_list
 	struct stack_list	*next;
 } Stack;
 
+Stack	*ft_lstlast(Stack *lst)
+{
+	Stack	*temp;
+
+	if (lst == NULL)
+		return (NULL);
+	temp = lst;
+	while ((temp->next) != NULL)
+		temp = temp->next;
+	return (temp);
+}
+
+
 int	ft_lstsize(Stack *lst)
 {
 	int		size;
@@ -113,6 +126,33 @@ int	ft_push(Stack **stack_dst, Stack **stack_src)
 	return (0);
 }
 
+int	rotate(Stack	**stack)
+{
+	Stack	*top;
+	Stack	*bot;
+
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	top = *stack;
+	bot = ft_lstlast(*stack);
+	*stack = top->next;
+	top->next = NULL;
+	bot->next = top;
+	return (0);
+}
+
+int main()
+{
+	Stack	*root;
+	root = create_stack(5, 1, 2, 3, 4, 5);
+	printf("before rotate:\n");
+	print_stack(&root);
+	rotate(&root);
+	printf("after rotate:\n");
+	print_stack(&root);
+}
+
+/*
 int	main()
 {
 	Stack	*root_a;
@@ -140,8 +180,7 @@ int	main()
 
 	return (0);
 }
-
-
+*/
 	
 /*
 int main()
