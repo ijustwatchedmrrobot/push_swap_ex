@@ -20,7 +20,7 @@ int	swap(t_list **stack)
 	t_list	*temp;
 
 	//*stack -> &stack ??
-	if (ft_lstsize(&stack) < 2)
+	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	top = *stack;
 	next = top->next;
@@ -53,7 +53,7 @@ int	sb(t_list	**stack_b)
 // swaps both a&b
 int	ss(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_lstsize(stack_a) < 2 || ft_lstsize(stack_b))
+	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b))
 		return (-1);
 	swap(stack_a);
 	swap(stack_b);
@@ -72,7 +72,7 @@ int	push(t_list **stack_dst, t_list **stack_src)
 		return (-1);
 	top_dst = *stack_dst;
 	top_src = *stack_src;
-	tmp = top_src;
+	temp = top_src;
 	top_src = top_src->next;
 	*stack_src = top_src;
 	if (!top_dst)
@@ -136,7 +136,7 @@ int	ra(t_list	**stack_a)
 	return (0);
 }
 
-int	ra(t_list	**stack_b)
+int	rb(t_list	**stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);

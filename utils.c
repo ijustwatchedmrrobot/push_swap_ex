@@ -37,11 +37,13 @@ int		is_sorted(t_list **stack)
 //free from last (check!!)
 void	free_str(char **str)
 {
-	while (*str)
-	{
-		free(*str);
-		*str++;
-	}
+	int	i;
+
+	i = 0;
+	while (*(str + i))
+		i++;
+	while (i >= 0)
+		free(*(str + i--));
 }
 
 //find the distance between entered index and the top
@@ -82,7 +84,7 @@ void	print_stack(t_list *top)
 	temp = top;
 	while (temp != NULL)
 	{
-		ft_putnbr_fd(temp->value, 1);
+		ft_putnbr_fd(temp->data, 1);
 		ft_putendl_fd("", 1);
 		temp = temp->next;
 	}
@@ -96,7 +98,7 @@ void	make_index_top(t_list **stack, int distance)
 	int		temp;
 
 	if (!distance)
-		return (0);
+		return ;
 	top = *stack;
 	temp = ft_lstsize(top) - distance;
 	if (distance <= (ft_lstsize(top) / 2))
@@ -116,9 +118,9 @@ void	make_index_top(t_list **stack, int distance)
 int	contains(int num, char **av, int i)
 {
 	i++;
-	while (*(argv + i))
+	while (*(av + i))
 	{
-		if (ft_atoi(*(argv + i++)) == num)
+		if (ft_atoi(*(av + i++)) == num)
 			return (1);
 	}
 	return (0);
@@ -142,22 +144,49 @@ void	check_args(int ac, char **av)
 	char	**args;
 	int		i;
 
-	i = 1;
+	i = 0;
 	if (ac == 2)
 		args = ft_split(*(av + 1), ' ');
 	else
-		*(args++) = av;
+	{
+		i++;
+		args = av;
+	}
 	while (*(args + i))
 	{
 		temp = ft_atoi(*(args + i));
 		if (!is_str_num(*(args + i)))
 			ft_error("Error! Not a number.");
 		if (contains(temp, args, i))
-			ft_error("Error, reiteration occurs.")
+			ft_error("Error, reiteration occurs.");
 		if (temp < -2147483648 || temp > 2147483647)
 			ft_error("Error! Limit for integer exceeded.");
-		i++
+		i++;
 	}
 	if (ac == 2)
-		ft_free(args);
+		free_str(args);
+}
+
+void	init_stack(t_list **stack, int ac, char **av)
+{
+	t_list	*node;
+	char	**args;
+	int		i;
+
+	i = 0;
+	if (ac == 2)
+		args = ft_split(*(av + 1), ' ');
+	else
+	{
+		i++;
+		args = av;
+	}
+	while (*args)
+	{
+		node = ft_lstnew(ft_atoi(*args));
+		ft_lstadd_back(stack, node);
+		args++;
+	}
+	if (ac == 2)
+		free_str(args);
 }
