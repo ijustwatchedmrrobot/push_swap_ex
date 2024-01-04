@@ -64,6 +64,6 @@ int	main(int ac, char **av)
 	{
 		//head = create_stack(3, 1, 2, 3);
 		init_stack(head, ac, av);
-		print_stacks(head);
+		print_stack(*head);
 	}
 }

@@ -68,7 +68,7 @@ void	print_stack(t_list *top)
 	temp = top;
 	while (temp != NULL)
 	{
-		ft_printf("%d\n", (int)(intptr_t)temp->content);
+		ft_printf("%d\n",(int)(intptr_t)temp->content);
 		temp = temp->next;
 	}
 }
@@ -141,11 +141,11 @@ void	init_stack(t_list **stack, int ac, char **av)
 		i++;
 		args = av;
 	}
-	while (*args)
+	while (*(args + i))
 	{
-		node = ft_lstnew((void *)(intptr_t)ft_atoi(*args));
+		node = ft_lstnew((void *)(intptr_t)ft_atoi(*(args + i)));
 		ft_lstadd_back(stack, node);
-		args++;
+		i++;
 	}
 	if (ac == 2)
 		free_str(args);
