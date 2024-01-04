@@ -23,10 +23,3 @@ t_list	*ft_lstnew(void *content)
 	new_node->next = NULL;
 	return (new_node);
 }
-
-t_list	*ft_lstnew_int(int	*content)
-{
-	t_list	*new_node;
-
-	new_node = mall
-}

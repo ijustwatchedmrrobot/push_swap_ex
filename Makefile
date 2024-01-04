@@ -1,6 +1,6 @@
-NAME = push_swap
+NAME = push_swap.a
 
-SRCS =  $(wildcard *.c)
+SRCS =  commands.c utils.c push_swap.c 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -9,22 +9,17 @@ CFLAGS = -Wall -Wextra -Werror -Iincludes
 
 RM = rm -rf
 
-all: ${NAME} ${CHECK}
-${NAME}: ${OBJS}
-	@${MAKE} -C ./libft
-	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
-
-${CHECK}: ${CHECK_OBJS} 
-	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/libft.a -o ${CHECK}
+all: $(NAME)
+$(NAME): $(OBJS)
+	@$(MAKE) -C ./libft
+	@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
 
 clean: 
-	@${MAKE} -C ./libft fclean
-	@${RM} ${OBJS}
-	@${RM} ${CHECK_OBJS}
+	@$(MAKE) -C ./libft fclean
+	@$(RM) $(OBJS)
 
 fclean: clean
-	@${RM} ${NAME}
-	@${RM} ${CHECK}
+	@$(RM) $(NAME)
 
 re: fclean all
 

@@ -26,7 +26,7 @@ int		is_sorted(t_list **stack)
 	top = *stack;
 	while (top && top->next)
 	{
-		if (top->data < top->next->data)
+		if (top->content < top->next->content)
 			return (0);
 		top = top->next;
 	}
@@ -44,22 +44,6 @@ void	free_str(char **str)
 		i++;
 	while (i >= 0)
 		free(*(str + i--));
-}
-
-//find the distance between entered index and the top
-int	stack_distance(t_list **stack, int index)
-{
-	t_list	*top;
-	int		distance;
-
-	distance = 0;
-	top = *stack;
-	while (top->index != index)
-	{
-		distance++;
-		top = top->next;	
-	}
-	return (distance);
 }
 
 void	free_stack(t_list **stack)
@@ -84,7 +68,7 @@ void	print_stack(t_list *top)
 	temp = top;
 	while (temp != NULL)
 	{
-		ft_putnbr_fd(temp->data, 1);
+		ft_putnbr_fd(*(int *)temp->content, 1);
 		ft_putendl_fd("", 1);
 		temp = temp->next;
 	}
@@ -183,7 +167,7 @@ void	init_stack(t_list **stack, int ac, char **av)
 	}
 	while (*args)
 	{
-		node = ft_lstnew(ft_atoi(*args));
+		node = ft_lstnew((void *)(intptr_t)ft_atoi(*args));
 		ft_lstadd_back(stack, node);
 		args++;
 	}

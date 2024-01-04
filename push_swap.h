@@ -15,14 +15,7 @@
 
 # include "libft/libft.h"
 
-/*
-typedef struct s_list
-{
-	int				data;
-	int				index;
-	struct s_list	*next;
-}	t_list;
-*/
+
 //utils
 void	ft_error(char *msg);
 int		is_sorted(t_list **stack);

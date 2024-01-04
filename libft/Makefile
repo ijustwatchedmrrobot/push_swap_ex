@@ -24,16 +24,12 @@ FLAGS =	-Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJSB)
 	$(CC) $(FLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJS)
-
-bonus: $(NAME) $(OBJSB)
-	$(CC) $(FLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJSB)
+	ar rc $(NAME) $(OBJS) $(OBJSB)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJSB)
 
 fclean: clean
 	$(RM) $(NAME)
