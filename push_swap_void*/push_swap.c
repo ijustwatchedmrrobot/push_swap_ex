@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 #include <stdarg.h>
 
 void	pusht(t_list **top,int content)
@@ -46,7 +45,7 @@ void	print_stacks(t_list	**root)
 	temp = *root;
 	while (temp != NULL)
 	{
-		printf("data: %d\n", (int)(intptr_t)temp->content);
+		ft_printf("data: %d\n", (int)(intptr_t)temp->content);
 		temp = temp->next;
 	}
 }
@@ -54,14 +53,15 @@ void	print_stacks(t_list	**root)
 int	main(int ac, char **av)
 {
 	t_list	**head = NULL;
-	printf("test\n");
+	ft_printf("test\n");
 	if (ac < 1)
 	{
-		printf("if didn't worked :( %s\n", av[1]);
+		ft_printf("if didn't worked :( %s\n", av[1]);
 		return (0);
 	}
 	else
 	{
+
 		//head = create_stack(3, 1, 2, 3);
 		init_stack(head, ac, av);
 		print_stack(*head);
