@@ -21,6 +21,8 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) -C ./libft fclean
+	$(MAKE) -C ./ft_printf fclean
 
 re: fclean all
 
