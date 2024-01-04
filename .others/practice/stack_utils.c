@@ -53,31 +53,31 @@ Stack	**create_stack(int count, ...)
 	return (root);
 }
 
-void	print_stack(Stack	*root)
+void	print_stack(Stack	**root)
 {
 	Stack	*temp;
 
-	temp = root;
+	temp = *root;
 	while (temp != NULL)
 	{
 		printf("data: %d\n", temp->data);
-		printf("index: %d\n", temp->index);
-		printf("\n");
 		temp = temp->next;
 	}
 }
 
-/*
+
 int	main()
 {
 	Stack	**root;
 	
-	root = create_stack(6, 1, 2, 3, 4, 5, 6);
-	print_stack(*root);
+	root = create_stack(5, 2, 1, 8, 6, 15);
+	print_stack(root);
 	return (0);
 }
-*/
 
+
+
+/*
 int main()
 {
 	Stack	*top;
@@ -91,3 +91,4 @@ int main()
 	push(&top, 10);
 	print_stack(*root);
 }
+*/

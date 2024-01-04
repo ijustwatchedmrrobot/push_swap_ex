@@ -68,32 +68,9 @@ void	print_stack(t_list *top)
 	temp = top;
 	while (temp != NULL)
 	{
-		ft_putnbr_fd(*(int *)temp->content, 1);
+		ft_putnbr_fd(((int)(intptr_t)temp->content), 1);
 		ft_putendl_fd("", 1);
 		temp = temp->next;
-	}
-}
-
-//make the distanced index top
-//divide the instructions by two so you get the minimum cmds
-void	make_index_top(t_list **stack, int distance)
-{
-	t_list	*top;
-	int		temp;
-
-	if (!distance)
-		return ;
-	top = *stack;
-	temp = ft_lstsize(top) - distance;
-	if (distance <= (ft_lstsize(top) / 2))
-	{
-		while (distance -- > 0)
-			ra(stack);
-	}
-	else
-	{
-		while (temp-- > 0)
-			rra(stack);
 	}
 }
 
