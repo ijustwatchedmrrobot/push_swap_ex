@@ -9,12 +9,14 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
+	$(MAKE) -C ./ft_printf
 	$(CC) $(CFLAGS) -c $(SRCS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
-	$(MAKE) -C ./libft fclean
+	$(MAKE) -C ./libft clean
+	$(MAKE) -C ./ft_printf clean
 	$(RM) $(OBJS)
 
 fclean: clean

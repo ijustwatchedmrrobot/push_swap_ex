@@ -53,7 +53,7 @@ void	print_stacks(t_list	**root)
 
 int	main(int ac, char **av)
 {
-	t_list	**head;
+	t_list	**head = NULL;
 	printf("test\n");
 	if (ac < 1)
 	{
@@ -62,7 +62,8 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		head = create_stack(3, 1, 2, 4);
-		print_stack(*head);
+		//head = create_stack(3, 1, 2, 3);
+		init_stack(head, ac, av);
+		print_stacks(head);
 	}
 }

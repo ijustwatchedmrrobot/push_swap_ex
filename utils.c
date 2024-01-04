@@ -15,7 +15,7 @@
 //UTILS
 void	ft_error(char *msg)
 {
-	ft_putendl_fd(msg, 1);
+	ft_printf("%s", msg);
 	exit(0);
 }
 
@@ -68,8 +68,7 @@ void	print_stack(t_list *top)
 	temp = top;
 	while (temp != NULL)
 	{
-		ft_putnbr_fd(((int)(intptr_t)temp->content), 1);
-		ft_putendl_fd("", 1);
+		ft_printf("%d\n", (int)(intptr_t)temp->content);
 		temp = temp->next;
 	}
 }
