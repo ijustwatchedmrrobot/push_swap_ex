@@ -46,4 +46,8 @@ int	rra(t_list **stack_a);
 int	rrb(t_list **stack_b);
 int	rrr(t_list **stack_a, t_list **stack_b);
 
+//FUCK ME
+void	push_ft(t_list **top, int content);
+t_list	**init2(int ac, char **av);
+
 # endif

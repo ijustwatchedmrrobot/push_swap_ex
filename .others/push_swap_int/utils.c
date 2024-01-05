@@ -133,18 +133,18 @@ void	init_stack(t_list **stack, int ac, char **av)
 	char	**args;
 	int		i;
 
+
 	i = 0;
 	if (ac == 2)
 		args = ft_split(*(av + 1), ' ');
 	else
 	{
-		i++;
+		i = 1;
 		args = av;
 	}
 	while (*(args + i))
 	{
-		node = ft_lstnew(ft_atoi(*(args + i)));
-		ft_lstadd_back(stack, node);
+		push_ft(stack, ft_atoi(args[i]));
 		i++;
 	}
 	if (ac == 2)

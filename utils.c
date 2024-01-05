@@ -127,9 +127,16 @@ void	check_args(int ac, char **av)
 		free_str(args);
 }
 
+void	push_ft(t_list **top, int content)
+{
+	t_list	*temp;
+
+	temp = ft_lstnew((void *)(intptr_t)content);
+	ft_lstadd_back(top, temp);
+}
+
 void	init_stack(t_list **stack, int ac, char **av)
 {
-	t_list	*node;
 	char	**args;
 	int		i;
 
@@ -143,8 +150,7 @@ void	init_stack(t_list **stack, int ac, char **av)
 	}
 	while (args[i])
 	{
-		node = ft_lstnew((void *)(intptr_t)ft_atoi(args[i]));
-		ft_lstadd_back(stack, node);
+		push_ft(stack, ft_atoi(args[i]));
 		i++;
 	}
 	if (ac == 2)

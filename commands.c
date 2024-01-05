@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 //swap first two elements
-int	swap(t_list **stack)
+void	swap(t_list **stack)
 {
 	t_list	*top;
 	t_list	*next;
@@ -29,40 +29,36 @@ int	swap(t_list **stack)
 	temp = top;
 	top = next;
 	next = temp;
-	return (0);
 }
 
 // swaps a
-int	sa(t_list	**stack_a)
+void	sa(t_list	**stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
 	ft_printf("sa");
-	return (0);
 }
 
 // swaps b
-int	sb(t_list	**stack_b)
+void	sb(t_list	**stack_b)
 {
 	if (swap(stack_b) == -1)
 		return (-1);
 	ft_printf("sb");
-	return (0);
 }
 
 // swaps both a&b
-int	ss(t_list **stack_a, t_list **stack_b)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b))
 		return (-1);
 	swap(stack_a);
 	swap(stack_b);
 	ft_printf("ss");
-	return (0);
 }
 
 //pushes top (head) of source to dest
-int	push(t_list **stack_dst, t_list **stack_src)
+void	push(t_list **stack_dst, t_list **stack_src)
 {
 	t_list	*temp;
 	t_list	*top_dst;
@@ -86,25 +82,22 @@ int	push(t_list **stack_dst, t_list **stack_src)
 		temp->next = top_dst;
 		*stack_dst = temp;
 	}
-	return (0);
 }
 
 //pushes b_top to a
-int	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
 	ft_printf("pa");
-	return (0);
 }
 
 //pushes a_top to b
-int	pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
 	ft_printf("pb");	
-	return (0);
 }
 
 //shift all the elements of stack by one, first element becomes the last
@@ -113,7 +106,7 @@ int	pb(t_list **stack_a, t_list **stack_b)
 // NULL <- 1 <- 2 <- 3 <- 4 <- *stack <- 5 <- 1 <- ...
 // NULL <- 5 <- 1 <- 2 <- 3 <- 4 <- *stack
 //change the 'next' of last two elements (top and prev)
-int	rotate(t_list	**stack)
+void	rotate(t_list	**stack)
 {
 	t_list	*top;
 	t_list	*bot;
@@ -125,40 +118,36 @@ int	rotate(t_list	**stack)
 	*stack = top->next;
 	top->next = NULL;
 	bot->next = top;
-	return (0);
 }
 
-int	ra(t_list	**stack_a)
+void	ra(t_list	**stack_a)
 {
 	if (rotate(stack_a) == -1)
 		return (-1);
 	ft_printf("ra");
-	return (0);
 }
 
-int	rb(t_list	**stack_b)
+void	rb(t_list	**stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);
 	ft_printf("rb");
-	return (0);
 }
 
-int	rr(t_list	**stack_a, t_list	**stack_b)
+void	rr(t_list	**stack_a, t_list	**stack_b)
 {
 	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
 		return (-1);
 	rotate(stack_a);
 	rotate(stack_b);
 	ft_printf("rr");
-	return (0);
 }
 
 //Shift all the elements of the stack by one in the reverse direction
 // NULL <- 1 <- 2 <- 3 <- 4 <- 5 <- *stack last becomes top
 // NULL <- NULL <- 2 <- 3 <- 4 <- 5 <- *stack
 // NULL <- 2 <- 3 <- 4 <- 5 <- 1 <- *stack
-int	reverse_rotate(t_list	**stack)
+void	reverse_rotate(t_list	**stack)
 {
 	t_list	*top;
 	t_list	*bot;
@@ -178,29 +167,25 @@ int	reverse_rotate(t_list	**stack)
 	}
 	bot->next = *stack;
 	*stack = bot;
-	return (0);
 }
 
-int	rra(t_list **stack_a)
+void	rra(t_list **stack_a)
 {	
 	if (reverse_rotate(stack_a) == -1)
 		return (-1);
 	ft_printf("rra");
-	return (0);
 }
 
-int	rrb(t_list **stack_b)
+void	rrb(t_list **stack_b)
 {	
 	if (reverse_rotate(stack_b) == -1)
 		return (-1);
 	ft_printf("rrb");
-	return (0);
 }
 
-int	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
 		return (-1);
 	ft_printf("rrr");
-	return (0);
 }

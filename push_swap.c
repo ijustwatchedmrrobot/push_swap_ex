@@ -11,59 +11,53 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdarg.h>
-
-void	pusht(t_list **top,int content)
-{
-	t_list	*temp;
-
-	temp = malloc(sizeof(t_list));
-	temp->next = *top;
-	temp->content = content;
-	*top = temp;	
-}
-
-t_list	**create_stack(int count, ...)
-{
-	t_list	*top;
-	t_list	**root;
-	va_list	args;
-
-	top = NULL;
-	root = &top;
-	va_start(args, count);
-	while (count--)
-		pusht(&top, va_arg(args, int));
-	va_end(args);
-	return (root);
-}
-
-void	print_stacks(t_list	**root)
-{
-	t_list	*temp;
-
-	temp = *root;
-	while (temp != NULL)
-	{
-		printf("data: %d\n",temp->content);
-		temp = temp->next;
-	}
-}
 
 int	main(int ac, char **av)
 {
-	t_list	**head = NULL;
-	printf("test\n");
-	if (ac < 1)
+	t_list	**stack_a;
+	t_list	**stack_b;
+
+	stack_a = (t_list **)malloc(sizeof(t_list));
+	stack_b = (t_list **)malloc(sizeof(t_list));
+	*stack_a = NULL;
+	*stack_b = NULL;
+
+	init_stack(stack_a, ac, av);
+	print_stack(*stack_a);
+	ft_printf("\n");
+
+	//sa(stack_a);
+	//pb(stack_a, stack_b);
+	//pb(stack_a, stack_b);
+	//pb(stack_a, stack_b);
+	//rr(stack_a, stack_b);
+	//rrr(stack_a, stack_b);
+	//sa(stack_a);
+	//pa(stack_a, stack_b);
+	//pa(stack_a, stack_b);
+	//pa(stack_a, stack_b);
+	
+	print_stack(*stack_a);
+	ft_printf("\n");
+	return (0);
+}
+
+/*
+int	main(int ac, char **av)
+{
+	t_list	**head;
+
+	head = (t_list **)malloc(sizeof(t_list));
+	*head = NULL;
+	if (ac < 2)
 	{
-		printf("if didn't worked :( %s\n", av[1]);
+		ft_printf("if didn't worked :( %s\n", av[1]);
 		return (0);
 	}
 	else
 	{
-		//head = create_stack(3, 1, 2, 3);
 		init_stack(head, ac, av);
 		print_stack(*head);
 	}
 }
+*/
