@@ -63,3 +63,14 @@ int main()
 		root = root->next;
 	}
 }
+
+//push func for single linked lists
+void	pusht(t_list **top,int content)
+{
+	t_list	*temp;
+
+	temp = malloc(sizeof(t_list));
+	temp->next = *top;
+	temp->content = (void *)(intptr_t)content;
+	*top = temp;	
+}
