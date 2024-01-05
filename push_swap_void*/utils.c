@@ -135,15 +135,15 @@ void	init_stack(t_list **stack, int ac, char **av)
 
 	i = 0;
 	if (ac == 2)
-		args = ft_split(*(av + 1), ' ');
+		args = ft_split(av[1], ' ');
 	else
 	{
-		i++;
+		i = 1;
 		args = av;
 	}
-	while (*(args + i))
+	while (args[i])
 	{
-		node = ft_lstnew((void *)(intptr_t)ft_atoi(*(args + i)));
+		node = ft_lstnew((void *)(intptr_t)ft_atoi(args[i]));
 		ft_lstadd_back(stack, node);
 		i++;
 	}

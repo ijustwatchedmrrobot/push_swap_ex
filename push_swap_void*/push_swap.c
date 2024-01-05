@@ -13,14 +13,12 @@
 #include "push_swap.h"
 #include <stdarg.h>
 
-void	pusht(t_list **top,int content)
+void	push_ft(t_list **top, int content)
 {
 	t_list	*temp;
 
-	temp = malloc(sizeof(t_list));
-	temp->next = *top;
-	temp->content = (void *)(intptr_t)content;
-	*top = temp;	
+	temp = ft_lstnew((void *)(intptr_t)content);
+	ft_lstadd_back(top, temp);
 }
 
 t_list	**create_stack(int count, ...)
@@ -33,35 +31,22 @@ t_list	**create_stack(int count, ...)
 	root = &top;
 	va_start(args, count);
 	while (count--)
-		pusht(&top, va_arg(args, int));
+		push_ft(&top, va_arg(args, int));
 	va_end(args);
 	return (root);
-}
-
-void	print_stacks(t_list	**root)
-{
-	t_list	*temp;
-
-	temp = *root;
-	while (temp != NULL)
-	{
-		ft_printf("data: %d\n", (int)(intptr_t)temp->content);
-		temp = temp->next;
-	}
 }
 
 int	main(int ac, char **av)
 {
 	t_list	**head = NULL;
 	ft_printf("test\n");
-	if (ac < 1)
+	if (ac < 2)
 	{
 		ft_printf("if didn't worked :( %s\n", av[1]);
 		return (0);
 	}
 	else
 	{
-
 		//head = create_stack(3, 1, 2, 3);
 		init_stack(head, ac, av);
 		print_stack(*head);
