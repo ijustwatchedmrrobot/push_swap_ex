@@ -73,6 +73,23 @@ void	print_stack(t_list *top)
 	}
 }
 
+//errors!!
+void	print_stacks(t_list *a, t_list *b)
+{
+	t_list	*temp_a;
+	t_list	*temp_b;
+
+	temp_a = a;
+	temp_b = b;
+	while (temp_a != NULL || temp_b != NULL)
+	{
+		ft_printf("%d   %d\n",(int)(intptr_t)temp_a->content, (int)(intptr_t)temp_b->content);
+		temp_a = temp_a->next;
+		temp_b = temp_b->next;
+	}
+	ft_printf("_   _\na   b\n");
+}
+
 //ARGS
 //try to rm index
 int	contains(int num, char **av, int i)

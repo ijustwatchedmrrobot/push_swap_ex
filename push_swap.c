@@ -24,21 +24,19 @@ int	main(int ac, char **av)
 
 	init_stack(stack_a, ac, av);
 	print_stack(*stack_a);
-	ft_printf("\n");
 
-	//sa(stack_a);
-	//pb(stack_a, stack_b);
-	//pb(stack_a, stack_b);
-	//pb(stack_a, stack_b);
-	//rr(stack_a, stack_b);
-	//rrr(stack_a, stack_b);
-	//sa(stack_a);
-	//pa(stack_a, stack_b);
-	//pa(stack_a, stack_b);
-	//pa(stack_a, stack_b);
-	
+	sa(stack_a);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	rr(stack_a, stack_b);
+	rrr(stack_a, stack_b);
+	sa(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+
 	print_stack(*stack_a);
-	ft_printf("\n");
 	return (0);
 }
 
