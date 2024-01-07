@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+/*
+int main(int ac, char **av)
+{
+	t_list	**stack_a;
+
+	stack_a = (t_list **)malloc(sizeof(t_list));
+	*stack_a = NULL;
+
+	init_stack(stack_a, ac, av);
+	print_stack(*stack_a);
+	ft_printf("%d\n", is_sorted(stack_a));
+}
+*/
+
+
 int	main(int ac, char **av)
 {
 	t_list	**stack_a;
@@ -24,7 +39,7 @@ int	main(int ac, char **av)
 
 	init_stack(stack_a, ac, av);
 	print_stack(*stack_a);
-
+	ft_printf("%d", is_sorted(stack_a));
 	sa(stack_a);
 	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
@@ -37,25 +52,6 @@ int	main(int ac, char **av)
 	pa(stack_a, stack_b);
 
 	print_stack(*stack_a);
+	ft_printf("%d\n", is_sorted(stack_a));
 	return (0);
 }
-
-/*
-int	main(int ac, char **av)
-{
-	t_list	**head;
-
-	head = (t_list **)malloc(sizeof(t_list));
-	*head = NULL;
-	if (ac < 2)
-	{
-		ft_printf("if didn't worked :( %s\n", av[1]);
-		return (0);
-	}
-	else
-	{
-		init_stack(head, ac, av);
-		print_stack(*head);
-	}
-}
-*/

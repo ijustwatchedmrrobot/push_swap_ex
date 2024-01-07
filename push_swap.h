@@ -23,7 +23,6 @@ void	free_str(char **str);
 int		stack_distance(t_list **stack, int index);
 void	free_stack(t_list **stack);
 void	print_stack(t_list *top);
-void	print_stacks(t_list *a, t_list *b);
 void	make_index_top(t_list **stack, int distance);
 int		contains(int num, char **av, int i);
 int		is_str_num(char *num);
@@ -47,5 +46,8 @@ int	reverse_rotate(t_list	**stack);
 int	rra(t_list **stack_a);
 int	rrb(t_list **stack_b);
 int	rrr(t_list **stack_a, t_list **stack_b);
+
+//error
+void	print_stacks(t_list *a, t_list *b);
 
 # endif

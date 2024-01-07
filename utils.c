@@ -26,7 +26,7 @@ int		is_sorted(t_list **stack)
 	top = *stack;
 	while (top && top->next)
 	{
-		if (top->content < top->next->content)
+		if (top->content > top->next->content)
 			return (0);
 		top = top->next;
 	}
