@@ -1,5 +1,5 @@
 NAME = push_swap.a
-SRCS = commands.c utils.c push_swap.c 
+SRCS = commands.c utils.c push_swap.c sort.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes

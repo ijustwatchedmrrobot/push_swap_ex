@@ -7,22 +7,38 @@
 typedef struct stack_list
 {
 	int					data;
-	int					index;
 	struct stack_list	*next;
 } Stack;
 
+Stack *last_node(Stack *head)
+{
+	Stack *temp;
+
+	if (head == NULL)
+		return (NULL);
+	temp = head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
+}
+
 void	push(Stack **top,int data)
 {
-	Stack	*temp;
+	Stack	*new;
+	Stack	*last;
 
-	temp = malloc(sizeof(Stack));
-	temp->next = *top;
-	temp->data = data;
+	new = malloc(sizeof(Stack));
+	if (!new)
+		return ;
+	new->data = data;
+	new->next = NULL;
 	if (*top == NULL)
-		temp->index = -1;
+		*top = new;
 	else
-		temp->index = (*top)->index + 1;
-	*top = temp;
+	{
+		last = last_node(*top);
+		last->next = new;	
+	}
 }
 
 // a -> b -> c -> d -> top
@@ -65,12 +81,38 @@ void	print_stack(Stack	**root)
 	}
 }
 
+Stack *n_node(Stack *head, int n)
+{
+	Stack *temp;
+
+	if (head == NULL)
+		return (NULL);
+	temp = head;
+	while (--n)
+		temp = temp->next;
+	return (temp);
+}
+
+void	swap_nodes(Stack **head, int n1, int n2)
+{
+	Stack	*node1;
+	Stack	*node2;
+	int	temp;
+
+	node1 = n_node(*head, n1);
+	node2 = n_node(*head, n2);
+	temp = node1->data;
+	node1->data = node2->data;
+	node2->data = temp;
+}
+
 
 int	main()
 {
 	Stack	**root;
 	
-	root = create_stack(5, 2, 1, 8, 6, 15);
+	root = create_stack(5, 1, 2, 3, 4, 5);
+	swap_nodes(root, 1, 2);
 	print_stack(root);
 	return (0);
 }

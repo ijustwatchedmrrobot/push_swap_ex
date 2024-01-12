@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,25 @@
 
 #include "push_swap.h"
 
-/*
-int main(int ac, char **av)
+void	sort3(t_list **h)
 {
-	t_list	**stack_a;
-
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-
-	init_stack(stack_a, ac, av);
-	print_stack(*stack_a);
-	ft_printf("%d\n", is_sorted(stack_a));
-}
-*/
-
-
-int	main(int ac, char **av)
-{
-	t_list	**stack_a;
-	t_list	**stack_b;
-
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	stack_b = (t_list **)malloc(sizeof(t_list));
-	*stack_a = NULL;
-	*stack_b = NULL;
-
-	init_stack(stack_a, ac, av);
-	print_stack(*stack_a);
-	if (!is_sorted(stack_a))
-		sort3(stack_a);
-	print_stack(*stack_a);
-	return (0);
+	if (n_data(*h, 2) > n_data(*h, 1))
+	{
+		if (n_data(*h, 2) > n_data(*h, 0))
+			sa(h);
+		else
+			ra(h);
+	}
+	else
+	{	
+		if (n_data(*h, 2) > n_data(*h, 0))
+			ra(h);
+		else if (n_data(*h, 1) > n_data(*h, 0))
+			ra(h);
+		else
+		{
+			rra(h);
+			sa(h);
+		}
+	}
 }

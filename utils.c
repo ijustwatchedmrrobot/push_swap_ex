@@ -144,6 +144,43 @@ void	check_args(int ac, char **av)
 		free_str(args);
 }
 
+t_list	*n_node(t_list *head, int n)
+{
+	t_list	*temp;
+
+	if (head == NULL)
+		return (NULL);
+	temp = head;
+	while (--n)
+		temp = temp->next;
+	return (temp);
+}
+
+int	n_data(t_list *head, int n)
+{
+	t_list	*temp;
+
+	if (head == NULL)
+		return (0);
+	temp = head;
+	while (n--)
+		temp = temp->next;
+	return ((int)(intptr_t)temp->content);
+}
+
+void	swap_nodes(t_list **head, int n1, int n2)
+{
+	t_list	*node1;
+	t_list	*node2;
+	void	*temp;
+	
+	node1 = n_node(*head, n1);
+	node2 = n_node(*head, n2);
+	temp = node1->content;
+	node1->content = node2->content;
+	node2->content = temp;
+}
+
 void	push_ft(t_list **top, int content)
 {
 	t_list	*temp;
