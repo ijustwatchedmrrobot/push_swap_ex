@@ -222,3 +222,50 @@ t_list	*mid_node(t_list **head)
 		temp = temp->next;
 	return (temp);
 }
+
+t_list	*max_node(t_list	**head)
+{
+	t_list	*temp;
+	t_list	*max;
+
+	temp = *head;
+	max = temp;
+	while (temp->next != NULL)
+	{
+		if ((int)(intptr_t)temp->content > (int)(intptr_t)max->content)
+			max = temp;
+		temp = temp->next;
+	}
+	return (max);
+}
+
+t_list	*min_node(t_list **head)
+{
+	t_list	*temp;
+	t_list	*min;
+
+	temp = *head;
+	min = temp;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+		if ((int)(intptr_t)temp->content < (int)(intptr_t)min->content)
+			min = temp;
+	}
+	return (min);
+}
+
+int	node_distance(t_list	**head, t_list *node)
+{
+	t_list	*temp;
+	int		distance;
+
+	temp = *head;
+	distance = 0;
+	while (temp != NULL &&temp->content != node->content)
+	{
+		distance++;
+		temp = temp->next;
+	}
+	return (distance);
+}

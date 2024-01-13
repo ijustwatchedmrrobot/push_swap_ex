@@ -24,10 +24,8 @@ int	main(int ac, char **av)
 
 	init_stack(stack_a, ac, av);
 	print_stack(*stack_a);
-	quick_sort(stack_a, stack_b);
-	ft_printf("a\n");
+	ft_printf("min node:%d\n", (int)(intptr_t)min_node(stack_a)->content);
+	worst_sort(stack_a, stack_b);
 	print_stack(*stack_a);
-	ft_printf("b\n");
-	print_stack(*stack_b);
 	return (0);
 }

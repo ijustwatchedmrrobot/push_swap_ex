@@ -38,18 +38,26 @@ void	sort3(t_list **head)
 	}
 }
 
-void	quick_sort(t_list **a, t_list **b)
+void	worst_sort(t_list **a, t_list **b)
 {
-	int		temp;
-	int		pivot;
+	t_list	*min;
 
-	temp = *a;
-	pb(a, b);
-	pivot = (int)(intptr_t)(*b->content);
-	while (temp->next != NULL)
+	while (*a != NULL)
 	{
-		if (pivot > temp->content)
+		min = min_node(a);
+		if (node_distance(a, min) < (ft_lstsize(*a) / 2))
+		{
+			while ((*a)->content != min->content)
+				ra(a);
+			pb(a,b);
+		}
+		else
+		{
+			while ((*a)->content != min->content)
+				rra(a);
 			pb(a, b);
-		temp = temp->next;
+		}
 	}
+		while (*b != NULL)
+			pa(a, b);
 }
