@@ -12,25 +12,28 @@
 
 #include "push_swap.h"
 
-void	sort3(t_list **h)
+void	sort3(t_list **head)
 {
-	if (n_data(*h, 2) > n_data(*h, 1))
+	if (n_data(*head, 2) > n_data(*head, 1))
 	{
-		if (n_data(*h, 2) > n_data(*h, 0))
-			sa(h);
+		if (n_data(*head, 2) > n_data(*head, 0))
+			sa(head);
 		else
-			ra(h);
+			ra(head);
+	}
+	if (n_data(*head, 1) > n_data(*head, 0))
+	{	
+		if (n_data(*head, 2) > n_data(*head, 0))
+		{
+			rra(head);
+			sa(head);
+		}
+		else
+			rra(head);
 	}
 	else
-	{	
-		if (n_data(*h, 2) > n_data(*h, 0))
-			ra(h);
-		else if (n_data(*h, 1) > n_data(*h, 0))
-			ra(h);
-		else
-		{
-			rra(h);
-			sa(h);
-		}
+	{
+		ra(head);
+		sa(head);
 	}
 }
