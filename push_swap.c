@@ -24,11 +24,10 @@ int	main(int ac, char **av)
 
 	init_stack(stack_a, ac, av);
 	print_stack(*stack_a);
-	if (!is_sorted(stack_a))
-	{
-		sort3(stack_a);
-		ft_printf("sorted\n");
-	}
+	quick_sort(stack_a, stack_b);
+	ft_printf("a\n");
 	print_stack(*stack_a);
+	ft_printf("b\n");
+	print_stack(*stack_b);
 	return (0);
 }

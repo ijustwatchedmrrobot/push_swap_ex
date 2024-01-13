@@ -210,3 +210,15 @@ void	init_stack(t_list **stack, int ac, char **av)
 	if (ac == 2)
 		free_str(args);
 }
+
+t_list	*mid_node(t_list **head)
+{
+	t_list	*temp;
+	int		list_size;
+
+	temp = *head;
+	list_size = (ft_lstsize(*head) / 2);
+	while (list_size--)
+		temp = temp->next;
+	return (temp);
+}

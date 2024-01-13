@@ -32,6 +32,7 @@ void	init_stack(t_list **stack, int ac, char **av);
 t_list	*n_node(t_list *head, int n);
 int		n_data(t_list *head, int n);
 void	swap_nodes(t_list **head, int n1, int n2);
+t_list	*mid_node(t_list **head);
 
 //commands
 int	swap(t_list **stack);
@@ -52,6 +53,7 @@ int	rrr(t_list **stack_a, t_list **stack_b);
 
 //sort
 void	sort3(t_list **h);
+void	quick_sort(t_list **a, t_list **b);
 
 //error
 void	print_stacks(t_list *a, t_list *b);

@@ -37,3 +37,19 @@ void	sort3(t_list **head)
 		sa(head);
 	}
 }
+
+void	quick_sort(t_list **a, t_list **b)
+{
+	int		temp;
+	int		pivot;
+
+	temp = *a;
+	pb(a, b);
+	pivot = (int)(intptr_t)(*b->content);
+	while (temp->next != NULL)
+	{
+		if (pivot > temp->content)
+			pb(a, b);
+		temp = temp->next;
+	}
+}
