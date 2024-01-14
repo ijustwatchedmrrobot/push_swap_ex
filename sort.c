@@ -61,3 +61,45 @@ void	worst_sort(t_list **a, t_list **b)
 		while (*b != NULL)
 			pa(a, b);
 }
+
+void	divide_sort(t_list **a, t_list **b)
+{
+	int 	median;
+	t_list	*min;
+	int		size;
+
+	median = find_median(a);
+	size = ft_lstsize(*a);
+	while (size--)
+	{
+		if (median > (int)(intptr_t)(*a)->content)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	while (*b != NULL)
+	{
+		min = min_node(b);
+		if (min->content == (*b)->content)
+		{
+			pa(a,b);
+			ra(a);
+		}
+		else
+			rb(b);
+	}
+	size = (ft_lstsize(*a) / 2);
+	while (size--)
+		pb(a, b);
+	while (*b != NULL)
+	{
+		min = min_node(b);
+		if (min->content == (*b)->content)
+		{
+			pa(a, b);
+			ra(a);
+		}
+		else
+			rb(b);
+	}
+}

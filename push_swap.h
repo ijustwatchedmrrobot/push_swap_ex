@@ -36,6 +36,8 @@ t_list	*mid_node(t_list **head);
 t_list	*max_node(t_list	**head);
 t_list	*min_node(t_list **head);
 int		node_distance(t_list	**head, t_list *node);
+int		find_median(t_list **head);
+void	sort_arr(int *arr, int size);
 
 //commands
 int	swap(t_list **stack);
@@ -58,6 +60,8 @@ int	rrr(t_list **stack_a, t_list **stack_b);
 void	sort3(t_list **h);
 void	quick_sort(t_list **a, t_list **b);
 void	worst_sort(t_list **a, t_list **b);
+void	divide_sort(t_list **a, t_list **b);
+
 //error
 void	print_stacks(t_list *a, t_list *b);
 

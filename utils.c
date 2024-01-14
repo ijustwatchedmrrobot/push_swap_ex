@@ -269,3 +269,47 @@ int	node_distance(t_list	**head, t_list *node)
 	}
 	return (distance);
 }
+
+void	sort_arr(int *arr, int size)
+{
+	int	i;
+	int	j;
+	int temp;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] > arr[j])
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+int	find_median(t_list **head)
+{
+	int		*arr;
+	t_list	*temp;
+	int		size;
+	int		i = 0;
+
+	temp = *head;
+	size = ft_lstsize(*head);
+	arr = malloc(sizeof(int) * size);
+	while (size > i)
+	{
+		arr[i] = (int)(intptr_t)temp->content;
+		temp = temp->next;
+		i++;
+	}
+	sort_arr(arr, size);
+	return (arr[size/2]);
+}
