@@ -24,9 +24,7 @@ int	main(int ac, char **av)
 
 	init_stack(stack_a, ac, av);
 	print_stack(*stack_a);
-	ft_printf("median: %d\n", find_median(stack_a));
-	ft_printf("min of a: %d\n", (int)(intptr_t)min_node(stack_a)->content);
-	divide_sort(stack_a, stack_b);
+	quarter_divide(stack_a, stack_b);
 	print_stack(*stack_a);
 	return (0);
 }

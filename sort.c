@@ -62,35 +62,10 @@ void	worst_sort(t_list **a, t_list **b)
 			pa(a, b);
 }
 
-void	divide_sort(t_list **a, t_list **b)
+void	back_to_b(t_list **a, t_list **b)
 {
-	int 	median;
 	t_list	*min;
-	int		size;
 
-	median = find_median(a);
-	size = ft_lstsize(*a);
-	while (size--)
-	{
-		if (median > (int)(intptr_t)(*a)->content)
-			pb(a, b);
-		else
-			ra(a);
-	}
-	while (*b != NULL)
-	{
-		min = min_node(b);
-		if (min->content == (*b)->content)
-		{
-			pa(a,b);
-			ra(a);
-		}
-		else
-			rb(b);
-	}
-	size = (ft_lstsize(*a) / 2);
-	while (size--)
-		pb(a, b);
 	while (*b != NULL)
 	{
 		min = min_node(b);
@@ -102,4 +77,47 @@ void	divide_sort(t_list **a, t_list **b)
 		else
 			rb(b);
 	}
+}
+
+void	go_to_a(t_list	**a, t_list **b, int limit)
+{
+	int	size;
+
+	size = ft_lstsize(*a);
+	while (size--)
+	{
+		if (limit > (int)(intptr_t)(*a)->content)
+			pb(a, b);
+		else
+			ra(a);
+	}
+}
+
+void	divide_sort(t_list **a, t_list **b)
+{
+	int		size;
+
+	go_to_a(a, b, find_median(a));
+	back_to_b(a, b);
+	size = (ft_lstsize(*a) / 2);
+	while (size--)
+		pb(a, b);
+	back_to_b(a, b);
+}
+
+//seg fault
+void	quarter_divide(t_list **a, t_list **b)
+{
+	int	size;
+
+	go_to_a(a, b, find_quarter1(a));
+	back_to_b(a,b);
+	go_to_a(a, b, find_median(a));
+	back_to_b(a, b);
+	go_to_a(a, b, find_quarter2(a));
+	back_to_b(a, b);
+	size = (ft_lstsize(*a) / 4) * 3;
+	while (size--)
+		pb(a, b);
+	back_to_b(a, b);
 }

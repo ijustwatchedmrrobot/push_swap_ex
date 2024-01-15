@@ -38,6 +38,8 @@ t_list	*min_node(t_list **head);
 int		node_distance(t_list	**head, t_list *node);
 int		find_median(t_list **head);
 void	sort_arr(int *arr, int size);
+int		find_quarter1(t_list **head);
+int		find_quarter2(t_list **head);
 
 //commands
 int	swap(t_list **stack);
@@ -61,6 +63,9 @@ void	sort3(t_list **h);
 void	quick_sort(t_list **a, t_list **b);
 void	worst_sort(t_list **a, t_list **b);
 void	divide_sort(t_list **a, t_list **b);
+void	back_to_b(t_list **a, t_list **b);
+void	go_to_a(t_list	**a, t_list **b, int limit);
+void	quarter_divide(t_list **a, t_list **b);
 
 //error
 void	print_stacks(t_list *a, t_list *b);
