@@ -299,9 +299,10 @@ int	*init_array(t_list **head)
 	int	*arr;
 	int	size;
 	int	i;
+	t_list	*temp;
 
 	i = 0;
-	size = ft_lstsize(*a);
+	size = ft_lstsize(*head);
 	temp = *head;
 	arr = malloc(sizeof(int) * size);
 	while (size > i)
@@ -314,76 +315,21 @@ int	*init_array(t_list **head)
 	return (arr);
 }
 
-int	find_it(t_list	**a, int lim)
+//int find equals to whichever quarter (1st, 2nd or 3rd)
+int	find_it(t_list	**a, int find)
 {
-	int arr;
+	int *arr;
 	int	size;
 
 	size = ft_lstsize(*a);
 	arr = init_array(a);
 	sort_arr(arr, size);
-	return (arr[size * lim]);
-}
-
-int	find_median(t_list **head)
-{
-	int		*arr;
-	t_list	*temp;
-	int		size;
-	int		i;
-
-	i = 0;
-	temp = *head;
-	size = ft_lstsize(*head);
-	arr = malloc(sizeof(int) * size);
-	while (size > i)
-	{
-		arr[i] = (int)(intptr_t)temp->content;
-		temp = temp->next;
-		i++;
-	}
-	sort_arr(arr, size);
-	return (arr[size / 2]);
-}
-
-int	find_quarter1(t_list **head)
-{
-	int		*arr;
-	t_list	*temp;
-	int		size;
-	int		i;
-
-	i = 0;
-	temp = *head;
-	size = ft_lstsize(*head);
-	arr = malloc(sizeof(int) * size);
-	while (size > i)
-	{
-		arr[i] = (int)(intptr_t)temp->content;
-		temp = temp->content;
-		i++;
-	}
-	sort_arr(arr, size);
-	return (arr[size / 4]);
-}
-
-int	find_quarter2(t_list **head)
-{
-	int		*arr;
-	t_list	*temp;
-	int		size;
-	int		i;
-
-	i = 0;
-	temp = *head;
-	size = ft_lstsize(*head);
-	arr = malloc(sizeof(int) * size);
-	while (size > i)
-	{
-		arr[i] = (int)(intptr_t)temp->content;
-		temp = temp->content;
-		i++;
-	}
-	sort_arr(arr, size);
-	return (arr[(size / 4) * 3]);
+	if (find == 1)
+		return (arr[size / 4]);
+	else if (find == 2)
+		return (arr[size / 2]);
+	else if (find == 3)
+		return (arr[(size * 3) / 4]);
+	else
+		return (-1);
 }

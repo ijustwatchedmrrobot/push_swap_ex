@@ -79,14 +79,11 @@ void	back_to_b(t_list **a, t_list **b)
 	}
 }
 
-void	go_to_a(t_list	**a, t_list **b, int limit)
+void	go_to_a(t_list	**a, t_list **b, int limit, int size)
 {
-	int	size;
-
-	size = ft_lstsize(*a);
 	while (size--)
 	{
-		if (limit > (int)(intptr_t)(*a)->content)
+		if (limit >= (int)(intptr_t)(*a)->content)
 			pb(a, b);
 		else
 			ra(a);
@@ -97,7 +94,7 @@ void	divide_sort(t_list **a, t_list **b)
 {
 	int		size;
 
-	go_to_a(a, b, find_median(a));
+	go_to_a(a, b, find_it(a, 2), ft_lstsize(*a));
 	back_to_b(a, b);
 	size = (ft_lstsize(*a) / 2);
 	while (size--)
@@ -108,16 +105,8 @@ void	divide_sort(t_list **a, t_list **b)
 //seg fault
 void	quarter_divide(t_list **a, t_list **b)
 {
-	int	size;
 
-	go_to_a(a, b, find_quarter1(a));
-	back_to_b(a,b);
-	go_to_a(a, b, find_median(a));
+	go_to_a(a, b, find_it(a, 1), ft_lstsize(*a));
 	back_to_b(a, b);
-	go_to_a(a, b, find_quarter2(a));
-	back_to_b(a, b);
-	size = (ft_lstsize(*a) / 4) * 3;
-	while (size--)
-		pb(a, b);
-	back_to_b(a, b);
+	go_to_a(a, b, find_it(a, 1), ft_lstsize(*a) / );
 }
