@@ -333,3 +333,28 @@ int	find_it(t_list	**a, int find)
 	else
 		return (-1);
 }
+
+//function which pushes to b in minimum set of instructions
+void	go_to_b(t_list **a, t_list **b, t_list *node)
+{
+	t_list	*head;
+	int dist;
+
+	head = *a;
+	dist = node_distance(a, node);
+	if (head->content == node->content)
+		pb(a, b)
+	if (dist < ft_lstsize(*a))
+	{
+		while (node->content != head->next->content)
+			ra(a);
+		sa(a);
+		pb(a, b);
+	}
+	else
+	{
+		while (node->content != head->content)
+			rra(a);
+		pb(a, b);
+	}
+}

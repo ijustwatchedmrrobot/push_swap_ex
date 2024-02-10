@@ -81,7 +81,7 @@ void	back_to_b(t_list **a, t_list **b)
 
 void	go_to_a(t_list	**a, t_list **b, int limit, int size)
 {
-	while (size--) 
+	while (size--)
 	{
 		if (limit > (int)(intptr_t)(*a)->content)
 			pb(a, b);
