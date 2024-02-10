@@ -38,6 +38,8 @@ t_list	*min_node(t_list **head);
 int		node_distance(t_list	**head, t_list *node);
 void	sort_arr(int *arr, int size);
 int		find_it(t_list	**a, int find);
+void	go_to_b(t_list **a, t_list **b, int data);
+t_list	*give_node(t_list **head, int data);
 
 //commands
 int	swap(t_list **stack);

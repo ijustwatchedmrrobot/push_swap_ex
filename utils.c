@@ -168,6 +168,16 @@ int	n_data(t_list *head, int n)
 	return ((int)(intptr_t)temp->content);
 }
 
+t_list	*give_node(t_list **head, int data)
+{
+	t_list	*temp;
+
+	temp = *head;
+	while ((int)(intptr_t)temp->content != data)
+		temp = temp->next;
+	return (temp);
+}
+
 void	swap_nodes(t_list **head, int n1, int n2)
 {
 	t_list	*node1;
@@ -270,6 +280,21 @@ int	node_distance(t_list	**head, t_list *node)
 	return (distance);
 }
 
+int	head_distance(t_list **head, int n)
+{
+	t_list	*temp;
+	int		dist;
+
+	dist = 0;
+	temp = *head;
+	while ((int)(intptr_t)temp->content != n)
+	{
+		temp = temp->next;
+		dist++;
+	}	
+	return (dist);
+}
+
 void	sort_arr(int *arr, int size)
 {
 	int	i;
@@ -335,25 +360,25 @@ int	find_it(t_list	**a, int find)
 }
 
 //function which pushes to b in minimum set of instructions
-void	go_to_b(t_list **a, t_list **b, t_list *node)
+void	go_to_b(t_list **a, t_list **b, int	data)
 {
 	t_list	*head;
-	int dist;
+	int		dist;
 
 	head = *a;
-	dist = node_distance(a, node);
-	if (head->content == node->content)
-		pb(a, b)
-	if (dist < ft_lstsize(*a))
+	dist = head_distance(a, data);
+	if ((int)(intptr_t)head->content == data)
+		pb(a, b);
+	if (dist < (ft_lstsize(*a) / 2))
 	{
-		while (node->content != head->next->content)
+		while ((int)(intptr_t)head->next->content != data)
 			ra(a);
 		sa(a);
 		pb(a, b);
 	}
 	else
 	{
-		while (node->content != head->content)
+		while ((int)(intptr_t)head->content != data)
 			rra(a);
 		pb(a, b);
 	}

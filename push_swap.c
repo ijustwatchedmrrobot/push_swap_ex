@@ -11,7 +11,25 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/*
+int main(int ac, char **av)
+{
+	t_list	**stack_a;
+	t_list	**stack_b;
 
+	stack_a = (t_list **)malloc(sizeof(t_list));
+	stack_b = (t_list **)malloc(sizeof(t_list));
+
+	*stack_a = NULL;
+	*stack_b = NULL;
+
+	init_stack(stack_a, ac, av);
+	print_stack(*stack_a);
+	go_to_b(stack_a, stack_b, 5);
+	print_stack(*stack_a);
+	return (0);
+}
+*/
 int	main(int ac, char **av)
 {
 	t_list	**stack_a;

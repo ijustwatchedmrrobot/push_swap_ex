@@ -83,7 +83,7 @@ void	go_to_a(t_list	**a, t_list **b, int limit, int size)
 {
 	while (size--)
 	{
-		if (limit > (int)(intptr_t)(*a)->content)
+		if (limit >= (int)(intptr_t)(*a)->content)
 			pb(a, b);
 		else
 			ra(a);
