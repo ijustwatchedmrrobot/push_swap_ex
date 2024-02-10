@@ -81,9 +81,9 @@ void	back_to_b(t_list **a, t_list **b)
 
 void	go_to_a(t_list	**a, t_list **b, int limit, int size)
 {
-	while (size--)
+	while (size--) 
 	{
-		if (limit >= (int)(intptr_t)(*a)->content)
+		if (limit > (int)(intptr_t)(*a)->content)
 			pb(a, b);
 		else
 			ra(a);
@@ -108,5 +108,5 @@ void	quarter_divide(t_list **a, t_list **b)
 
 	go_to_a(a, b, find_it(a, 1), ft_lstsize(*a));
 	back_to_b(a, b);
-	go_to_a(a, b, find_it(a, 1), ft_lstsize(*a) / );
+	go_to_a(a, b, find_it(a, 1), ft_lstsize(*a));
 }
